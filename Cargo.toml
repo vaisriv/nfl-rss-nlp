@@ -6,6 +6,7 @@ edition = "2021"
 
 [dependencies]
 polars = { version = "0.43.1", features = ["json", "lazy"] }
+polars-io = "0.43.1"
 reqwest = { version = "0.12.8", features = ["json"] }
 rss = { version = "2.0.9", features = ["with-serde"] }
 serde = { version = "1.0.210", features = ["derive"] }
