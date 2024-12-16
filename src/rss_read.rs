@@ -12,11 +12,9 @@ pub async fn update_feeds(urls: Vec<&str>) -> Result<DataFrame, Box<dyn std::err
         lazy_frames.push(rss_feed.lazy());
     }
 
-    // Concatenate the LazyFrames into a single LazyFrame
     let concatenated_lazyframe = concat(lazy_frames.clone(), UnionArgs::default())?;
 
-    // Collect the LazyFrame into a DataFrame in a blocking task
-    let all_feeds_df = task::spawn_blocking(move || concatenated_lazyframe.collect()).await??; // Handle both JoinError and the Result from collect()
+    let all_feeds_df = task::spawn_blocking(move || concatenated_lazyframe.collect()).await??;
 
     Ok(all_feeds_df)
 }
@@ -28,7 +26,6 @@ async fn fetch_rss_feed(
     let response = client.get(url).send().await?.bytes().await?;
     let channel = Channel::read_from(&response[..])?;
 
-    // Collect data into vectors
     let titles: Vec<String> = channel
         .items()
         .iter()
@@ -56,9 +53,19 @@ async fn fetch_rss_feed(
     let rss_posts = df![
         "title" => titles,
         "link" => links,
-        "description" => descriptions,
-        "pub_date" => pub_dates,
+        "description" => descriptions.clone(),
+        "pub_date" => pub_dates.clone(),
+        "date_description" => pub_dates.iter().zip(descriptions.iter()).map(|(ref p, ref d)| p.to_owned().to_owned()+": "+d.to_owned()).collect::<Vec<String>>(),
     ]?;
 
     Ok(rss_posts)
+}
+
+pub async fn extract_col(
+    rss_posts: &DataFrame,
+    column: &str
+) -> Result<Series, Box<dyn std::error::Error>> {
+    let descs_df: Series = rss_posts[column].clone();
+
+    Ok(descs_df)
 }
