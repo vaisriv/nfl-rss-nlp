@@ -1,0 +1,60 @@
+.TH nfl-rss-nlp 1 "December 16, 2024" "nfl-rss-nlp 1.0" "Usage Manual"
+.SH NAME
+nfl-rss-nlp \- NFL Super Bowl prediction tool using NLP from RSS feeds
+.SH SYNOPSIS
+.B nfl-rss-nlp
+[\fIOPTIONS\fR]
+.SH DESCRIPTION
+The
+.B nfl-rss-nlp
+command is a tool that uses RSS feed data and natural language processing (NLP)
+techniques to predict outcomes related to the upcoming NFL Super Bowl. By default,
+it attempts to answer the question:
+.PP
+"IWhat team is most likely to win the upcoming Super Bowl?"
+.PP
+You can override this question with a custom one, and optionally enable verbose output
+to see more detailed information regarding the prediction and data sources.
+.SH OPTIONS
+.TP
+\fB-q, --question\fR=\fISTRING\fR
+Specify a custom question for the NFL predictor.
+The default question is:
+.PP
+"What team is most likely to win the upcoming Super Bowl?"
+.TP
+\fB-v, --verbose\fR
+Enable verbose mode. Shows additional diagnostic and contextual information
+regarding the data retrieval and prediction process.
+.SH EXAMPLES
+.PP
+Run with the default question:
+.PP
+.EX
+nfl-rss-nlp
+.EE
+.PP
+Ask a custom question:
+.PP
+.EX
+nfl-rss-nlp --question "Which quarterback is expected to have the best performance this Sunday?"
+.EE
+.PP
+Run in verbose mode:
+.PP
+.EX
+nfl-rss-nlp --verbose
+.EE
+.SH EXIT STATUS
+The
+.B nfl-rss-nlp
+command exits with status 0 on success, and a non-zero status if an error occurs.
+.SH BUGS
+Please report issues or bugs through the project's issue tracker or by contacting
+the maintainer directly if no public tracker is available.
+.SH AUTHOR
+Developed by Vai Srivastava
+.SH SEE ALSO
+.BR bert (1),
+.BR newsboat (1),
+.BR pytorch (1)
