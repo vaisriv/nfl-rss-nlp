@@ -1,4 +1,4 @@
-# nfl-rss-nlp
+# :football: nfl-rss-nlp
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/vaisriv/nfl-rss-nlp)
 ![GitHub Release](https://img.shields.io/github/v/release/vaisriv/nfl-rss-nlp)
