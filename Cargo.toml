@@ -1,8 +1,12 @@
 [package]
 name = "nfl-rss-nlp"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["Vai Srivastava <vai.sriv@icloud.com>"]
 edition = "2021"
+description = "NFL Super Bowl prediction tool using NLP from RSS feeds"
+repository = "https://github.com/vaisriv/nfl-rss-nlp"
+keywords = ["cli", "rss", "nlp"]
+categories = ["command-line-utilities"]
 
 [dependencies]
 clap_derive = { version = "4.0.0-rc.1" }

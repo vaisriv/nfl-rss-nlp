@@ -10,7 +10,6 @@ async fn get_rss(verbose: bool) -> Result<Series, Box<dyn std::error::Error>> {
         "https://profootballmania.com/feed/",
         "https://feeds.washingtonpost.com/rss/rss_football-insider",
         "https://sportspyder.com/nfl/philadelphia-eagles/news.xml",
-        "https://www.thecoldwire.com/sports/nfl/philadelphia-eagles/feed/",
     ];
 
     let rss_feeds = update_feeds(urls).await;
