@@ -46,7 +46,7 @@ cargo run --release
 
 Of note, on first run, you will likely need to download the `rust-bert` Question-Answering model. This can be quite large, and make take a while. Be patient! Your Super Bowl answers are near!
 
-Details on how to run the program and its features are available within the manpage (accessed via `man ./manpage.mom`), or through the cli help menu (accessed via `cargo run --release -- --help`).
+Details on how to run the program and its features are available within the manpage (accessed via `man ./nfl-rss-nlp.1`), or through the cli help menu (accessed via `cargo run --release -- --help`).
 
 As `pytorch` is not compiled into the program, `nfl-rss-nlp` must be run through `cargo`. As such, necessary command line arguments can be passed through the following syntax:
 ```bash
